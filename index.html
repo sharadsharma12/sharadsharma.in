@@ -40,6 +40,7 @@
     </nav>
 
     <section class="hero" id="hero">
+        <canvas id="hero-canvas"></canvas>
         <div class="hero-container">
             <div class="hero-badge">Data Engineer II @ Amazon &bull; Gurgaon, India</div>
             <h1 class="hero-title">Sharad Sharma</h1>
@@ -288,12 +289,108 @@
         </div>
     </section>
 
+    <section class="projects" id="projects">
+        <div class="container">
+            <div class="section-label">Projects</div>
+            <h2 class="section-title">Key projects</h2>
+            <div class="carousel-wrapper">
+                <button class="carousel-btn carousel-prev" aria-label="Previous">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                </button>
+                <div class="carousel-track">
+                    <div class="project-card active">
+                        <div class="project-card-header">
+                            <span class="project-tag">Amazon Fintech</span>
+                            <span class="project-period">2022 — Present</span>
+                        </div>
+                        <h3>Fintech TDW</h3>
+                        <p>Tax Data Warehouse powering revenue reconciliation across AWS-Global and US-Retail markets.</p>
+                        <div class="project-metrics">
+                            <div class="project-metric">
+                                <span class="metric-value">45B+</span>
+                                <span class="metric-label">Records/Month</span>
+                            </div>
+                            <div class="project-metric">
+                                <span class="metric-value">71%</span>
+                                <span class="metric-label">Cost Reduction</span>
+                            </div>
+                            <div class="project-metric">
+                                <span class="metric-value">34</span>
+                                <span class="metric-label">Airflow DAGs</span>
+                            </div>
+                        </div>
+                        <div class="project-tech">PySpark &bull; Airflow &bull; EMR &bull; Redshift &bull; QuickSight</div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-card-header">
+                            <span class="project-tag">Optum / UHG</span>
+                            <span class="project-period">2020 — 2022</span>
+                        </div>
+                        <h3>DEEP — Data Science Enablement Platform</h3>
+                        <p>End-to-end automation framework for analytics and data science workflows on a 100 TB Hadoop cluster.</p>
+                        <div class="project-metrics">
+                            <div class="project-metric">
+                                <span class="metric-value">5+ TB</span>
+                                <span class="metric-label">Daily Ingestion</span>
+                            </div>
+                            <div class="project-metric">
+                                <span class="metric-value">750+</span>
+                                <span class="metric-label">Data Nodes</span>
+                            </div>
+                            <div class="project-metric">
+                                <span class="metric-value">50+</span>
+                                <span class="metric-label">Pipelines</span>
+                            </div>
+                        </div>
+                        <div class="project-tech">Hive &bull; Sqoop &bull; Spark &bull; Python &bull; Oozie</div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-card-header">
+                            <span class="project-tag">TCS</span>
+                            <span class="project-period">2016 — 2020</span>
+                        </div>
+                        <h3>ExaLogs — TCS Analytics Platform</h3>
+                        <p>Full-stack analytics dashboard adopted organization-wide for production deployment tracking. Won Applause Award.</p>
+                        <div class="project-metrics">
+                            <div class="project-metric">
+                                <span class="metric-value">Org-wide</span>
+                                <span class="metric-label">Adoption</span>
+                            </div>
+                            <div class="project-metric">
+                                <span class="metric-value">15</span>
+                                <span class="metric-label">Team Size</span>
+                            </div>
+                            <div class="project-metric">
+                                <span class="metric-value">5</span>
+                                <span class="metric-label">Direct Reports</span>
+                            </div>
+                        </div>
+                        <div class="project-tech">Hadoop &bull; Angular &bull; D3.js &bull; Java &bull; PostgreSQL</div>
+                    </div>
+                </div>
+                <button class="carousel-btn carousel-next" aria-label="Next">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                </button>
+            </div>
+            <div class="carousel-dots">
+                <button class="dot active" data-index="0"></button>
+                <button class="dot" data-index="1"></button>
+                <button class="dot" data-index="2"></button>
+            </div>
+        </div>
+    </section>
+
     <section class="skills" id="skills">
         <div class="container">
             <div class="section-label">Skills</div>
             <h2 class="section-title">Technical expertise</h2>
 
-            <div class="skills-grid">
+            <div class="skills-layout">
+                <div class="skills-chart-wrapper">
+                    <canvas id="skills-radar" width="360" height="360"></canvas>
+                    <div class="radar-tooltip" id="radar-tooltip"></div>
+                </div>
+                <div class="skills-grid">
                 <div class="skill-category">
                     <h3>Languages</h3>
                     <div class="skill-pills">
@@ -360,6 +457,7 @@
                         <span class="skill-pill"><i class="devicon-html5-plain colored"></i> HTML/CSS</span>
                         <span class="skill-pill"><i class="devicon-jquery-plain colored"></i> jQuery</span>
                     </div>
+                </div>
                 </div>
             </div>
         </div>

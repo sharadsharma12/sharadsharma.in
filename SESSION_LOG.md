@@ -47,6 +47,9 @@ A modern, responsive, interactive personal resume website for Sharad Sharma (Dat
 - **Active nav highlighting** — Current section highlighted as user scrolls
 
 ### Interactivity (Subtle & Professional)
+- **Animated particle network** — Hero background with drifting dots connected by lines; adapts to theme; pauses off-screen for performance
+- **Project cards carousel** — 3 swipeable project cards (Fintech TDW, DEEP, ExaLogs) with metrics; auto-advances every 5s; dot navigation; touch swipe support on mobile
+- **Skills radar chart** — 6-axis spider chart (AWS Cloud, PySpark, Airflow, SQL, Hadoop, Data Modeling) with gradient fill; sticky on desktop; redraws on theme switch
 - **Animated stat counters** — Numbers count up from 0 when scrolling into view (eased with quartic curve)
 - **Hero parallax** — Title fades out and stats drift up as you scroll
 - **Magnetic buttons** — Follow cursor slightly on hover + shine sweep on primary button
@@ -59,18 +62,19 @@ A modern, responsive, interactive personal resume website for Sharad Sharma (Dat
 - **Navbar** — Border/shadow appears only after scrolling (clean hero)
 - **Theme switch** — Smooth 0.4s transition on all backgrounds/colors
 - **Material Design easing** — All animations use `cubic-bezier(0.4, 0, 0.2, 1)`
-- **Performance** — Scroll events use `requestAnimationFrame` (no jank)
+- **Performance** — Scroll events use `requestAnimationFrame`; particle animation pauses when off-screen
 
 ---
 
 ## Sections
 
-1. **Hero** — Badge (Data Engineer II @ Amazon · Gurgaon, India), name, tagline, 3 animated stats, CTAs
+1. **Hero** — Particle network background, badge (Data Engineer II @ Amazon · Gurgaon, India), name, tagline, 3 animated stats, CTAs + download resume
 2. **About** — "Pipelines at scale, reliability by design" + 3 highlight cards
 3. **Experience** — 4 roles with company logos, project details, tech tags with devicon logos
-4. **Skills** — 6 categories with icon-labeled pills
-5. **Education** — B.Tech card with college logo + Certifications/Awards
-6. **Contact** — "Get in touch" + email, phone, LinkedIn, GitHub, location
+4. **Projects** — Carousel with 3 project cards (Fintech TDW, DEEP, ExaLogs) showing metrics + tech
+5. **Skills** — Radar chart (6-axis) + 6 categories with icon-labeled pills
+6. **Education** — B.Tech card with college logo + Certifications/Awards
+7. **Contact** — "Get in touch" + email, phone, LinkedIn, GitHub, location
 
 ---
 
@@ -175,7 +179,9 @@ A modern, responsive, interactive personal resume website for Sharad Sharma (Dat
 - ~~Make it interactive~~ ✅ Done (counters, parallax, magnetic buttons, micro-interactions)
 - ~~Remove generic copy~~ ✅ Done
 - ~~Add a downloadable PDF resume link~~ ✅ Done
-- Add a Projects section with live demos
+- ~~Add a Projects section~~ ✅ Done (carousel with 3 project cards)
+- ~~Add interactive skills visualization~~ ✅ Done (radar chart)
+- ~~Add animated hero background~~ ✅ Done (particle network)
 - Add page analytics (Google Analytics or Plausible)
 - Optimize images (compress JPGs, convert to WebP)
 - Add Open Graph meta tags for social sharing preview
