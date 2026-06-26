@@ -1089,6 +1089,121 @@ section {
     }
 }
 
+/* ========== Print Styles (Save as PDF) ========== */
+@media print {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+
+    body {
+        background: white;
+        color: #1a1a1a;
+        font-size: 11pt;
+        line-height: 1.5;
+    }
+
+    .navbar,
+    .hero-actions,
+    .theme-toggle,
+    .nav-toggle,
+    .nav-linkedin,
+    .hero-badge::after {
+        display: none !important;
+    }
+
+    .hero {
+        min-height: auto;
+        padding-top: 0;
+    }
+
+    .hero-container {
+        padding: 1rem 0;
+    }
+
+    .hero-badge {
+        margin-bottom: 0.5rem;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+        opacity: 1 !important;
+    }
+
+    .hero-subtitle {
+        margin-bottom: 1rem;
+    }
+
+    .hero-stats {
+        transform: none !important;
+        margin-bottom: 1rem;
+    }
+
+    .stat-number {
+        -webkit-text-fill-color: #0066ff;
+        font-size: 1.5rem;
+    }
+
+    section {
+        padding: 2rem 0;
+        break-inside: avoid;
+    }
+
+    .container {
+        max-width: 100%;
+        padding: 0;
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .timeline-content {
+        border: 1px solid #ddd;
+        box-shadow: none;
+        transform: none !important;
+        page-break-inside: avoid;
+    }
+
+    .timeline::before {
+        background: #ccc;
+    }
+
+    .highlight-card,
+    .skill-category,
+    .edu-card {
+        box-shadow: none;
+        transform: none !important;
+        border: 1px solid #ddd;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .edu-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .contact-item {
+        transform: none !important;
+    }
+
+    .text-gradient {
+        -webkit-text-fill-color: #0066ff;
+    }
+
+    .footer {
+        border-top: 1px solid #ddd;
+    }
+
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+}
+
 /* ========== Responsive — Small Mobile ========== */
 @media (max-width: 400px) {
     .hero-title {

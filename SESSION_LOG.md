@@ -7,7 +7,7 @@
 
 ## What Was Built
 
-A modern, responsive personal resume website for Sharad Sharma (Data Engineer II @ Amazon Fintech).
+A modern, responsive, interactive personal resume website for Sharad Sharma (Data Engineer II @ Amazon Fintech).
 
 **Tech stack:** HTML5, CSS3, vanilla JavaScript  
 **Design inspiration:** Microsoft AI Careers page (clean, minimal, bold typography, card-based layout)  
@@ -20,8 +20,8 @@ A modern, responsive personal resume website for Sharad Sharma (Data Engineer II
 ```
 ~/resume-website/
 ├── index.html          — Main page (single-page, 6 sections)
-├── style.css           — Responsive styles (3 breakpoints) + dark/light theme
-├── script.js           — Theme toggle, scroll animations, mobile nav, active link
+├── style.css           — Responsive styles (3 breakpoints) + dark/light theme + micro-interactions
+├── script.js           — Theme toggle, animated counters, parallax, magnetic buttons, scroll animations
 ├── CNAME               — Custom domain file for GitHub Pages
 ├── SESSION_LOG.md      — This file
 └── assets/
@@ -36,24 +36,39 @@ A modern, responsive personal resume website for Sharad Sharma (Data Engineer II
 
 ## Features
 
+### Core
 - **Dark/Light theme toggle** — Sun/moon icon in navbar, persists via localStorage, respects system preference on first visit
-- **LinkedIn quick link** — `/sharadsharma12` with icon in navbar, links to profile
-- **Company logos** — Real logos (from Personal/Logo folder) next to each job title
+- **LinkedIn quick link** — `/sharadsharma12` with icon in navbar, grouped with theme toggle
+- **Company logos** — Real logos next to each job title
 - **Tech stack icons** — Devicon library for Python, Java, Spark, Airflow, PostgreSQL, etc.
-- **Scroll animations** — IntersectionObserver-based fade-in on sections and cards
-- **Fully responsive** — 3 breakpoints (1024px, 768px, 400px), mobile hamburger nav
+- **Fully responsive** — 3 breakpoints (1024px, 768px, 400px), mobile hamburger nav with animation
 - **Active nav highlighting** — Current section highlighted as user scrolls
+
+### Interactivity (Subtle & Professional)
+- **Animated stat counters** — Numbers count up from 0 when scrolling into view (eased with quartic curve)
+- **Hero parallax** — Title fades out and stats drift up as you scroll
+- **Magnetic buttons** — Follow cursor slightly on hover + shine sweep on primary button
+- **Badge shimmer** — Subtle light sweep animation on the hero badge
+- **Staggered fade-ins** — Elements appear with slight delays for rhythm (not all at once)
+- **Timeline cards** — Slide right + blue glow on hover
+- **Highlight cards** — Lift with icon scaling up on hover
+- **Skill pills** — Lift with soft shadow on hover
+- **Contact links** — Slide right with blue left-border accent on hover
+- **Navbar** — Border/shadow appears only after scrolling (clean hero)
+- **Theme switch** — Smooth 0.4s transition on all backgrounds/colors
+- **Material Design easing** — All animations use `cubic-bezier(0.4, 0, 0.2, 1)`
+- **Performance** — Scroll events use `requestAnimationFrame` (no jank)
 
 ---
 
 ## Sections
 
-1. **Hero** — Name, badge (Data Engineer II @ Amazon), tagline, 3 stats, CTAs
-2. **About** — Summary + 3 highlight cards (pipelines, cost, performance)
+1. **Hero** — Badge (Data Engineer II @ Amazon · Gurgaon, India), name, tagline, 3 animated stats, CTAs
+2. **About** — "Pipelines at scale, reliability by design" + 3 highlight cards
 3. **Experience** — 4 roles with company logos, project details, tech tags with devicon logos
-4. **Skills** — 6 categories with icon-labeled pills (devicon library)
+4. **Skills** — 6 categories with icon-labeled pills
 5. **Education** — B.Tech card with college logo + Certifications/Awards
-6. **Contact** — Email, phone, LinkedIn, GitHub, location
+6. **Contact** — "Get in touch" + email, phone, LinkedIn, GitHub, location
 
 ---
 
@@ -120,14 +135,24 @@ A modern, responsive personal resume website for Sharad Sharma (Data Engineer II
 
 ## Design Decisions
 
-- **No framework** — pure HTML/CSS/JS for fast load, zero dependencies, easy to edit
-- **Dark/Light theme** — CSS custom properties toggled via `data-theme` attribute; localStorage for persistence; respects `prefers-color-scheme` on first visit
+- **No framework** — pure HTML/CSS/JS for fast load, zero build step, easy to edit
+- **Dark/Light theme** — CSS custom properties toggled via `data-theme` attribute; localStorage for persistence; smooth 0.4s transition between themes
 - **Devicon CDN** — tech logos via `cdn.jsdelivr.net/gh/devicons/devicon`
 - **Inter font** — Google Fonts, clean modern sans-serif
 - **Responsive:** 3 breakpoints (1024px tablet, 768px mobile, 400px small)
-- **Animations:** IntersectionObserver for scroll-triggered fade-ins
+- **Animations:** IntersectionObserver for scroll-triggered fade-ins with stagger
 - **Company badges:** Logo + name + location as a distinct visual unit
 - **LinkedIn in navbar** — Quick access with icon, grouped with theme toggle
+- **No section numbers** — removed for cleaner look
+- **Reduced bold** — only 1–2 key metrics per role highlighted
+- **No generic copy** — rewrote headlines to be specific and concise
+
+### Roast-Driven Improvements Applied
+- ~~"Scroll to explore"~~ Removed — unnecessary
+- ~~"Built with purpose" footer~~ Simplified to just © line
+- ~~Over-bolding~~ Reduced to 1–2 per role
+- ~~Generic headlines~~ Rewritten ("Pipelines at scale, reliability by design" / "Get in touch")
+- ~~Section numbers (01, 02...)~~ Removed
 
 ---
 
@@ -145,8 +170,11 @@ A modern, responsive personal resume website for Sharad Sharma (Data Engineer II
 
 - ~~Add dark mode toggle~~ ✅ Done
 - ~~Add LinkedIn in navbar~~ ✅ Done
+- ~~Make it interactive~~ ✅ Done (counters, parallax, magnetic buttons, micro-interactions)
+- ~~Remove generic copy~~ ✅ Done
 - Add a downloadable PDF resume link
 - Add a Projects section with live demos
 - Add page analytics (Google Analytics or Plausible)
 - Optimize images (compress JPGs, convert to WebP)
 - Add Open Graph meta tags for social sharing preview
+- Add a subtle background pattern or gradient mesh to hero
