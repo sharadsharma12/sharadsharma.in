@@ -102,79 +102,31 @@ document.addEventListener('DOMContentLoaded', () => {
         heroObserver.observe(canvas);
     }
 
-    // ============ PROJECT CAROUSEL ============
-    const cards = document.querySelectorAll('.project-card');
-    const dots = document.querySelectorAll('.dot');
-    const prevBtn = document.querySelector('.carousel-prev');
-    const nextBtn = document.querySelector('.carousel-next');
-    let currentIndex = 0;
 
-    function showCard(index) {
-        if (index === currentIndex && cards[index].classList.contains('active')) return;
+    // ============ RECOMMENDATIONS SCROLL ============
+    const recoSlider = document.getElementById('reco-slider');
+    const recoPrev = document.getElementById('reco-prev');
+    const recoNext = document.getElementById('reco-next');
 
-        cards.forEach(card => card.classList.remove('active'));
-        dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+    if (recoSlider && recoPrev && recoNext) {
+        const scrollAmount = recoSlider.offsetWidth * 0.35;
 
-        // Small delay to restart animation cleanly
-        requestAnimationFrame(() => {
-            cards[index].classList.add('active');
+        recoNext.addEventListener('click', () => {
+            recoSlider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
         });
-
-        currentIndex = index;
-    }
-
-    // Ensure first card (Amazon) is active on load
-    showCard(0);
-
-    if (prevBtn && nextBtn) {
-        prevBtn.addEventListener('click', () => {
-            showCard((currentIndex - 1 + cards.length) % cards.length);
-        });
-        nextBtn.addEventListener('click', () => {
-            showCard((currentIndex + 1) % cards.length);
-        });
-    }
-
-    dots.forEach(dot => {
-        dot.addEventListener('click', () => showCard(parseInt(dot.dataset.index)));
-    });
-
-    let carouselInterval = setInterval(() => {
-        showCard((currentIndex + 1) % cards.length);
-    }, 5000);
-
-    const carouselWrapper = document.querySelector('.carousel-wrapper');
-    if (carouselWrapper) {
-        carouselWrapper.addEventListener('mouseenter', () => clearInterval(carouselInterval));
-        carouselWrapper.addEventListener('mouseleave', () => {
-            carouselInterval = setInterval(() => {
-                showCard((currentIndex + 1) % cards.length);
-            }, 5000);
-        });
-    }
-
-    // Touch swipe
-    let touchStartX = 0;
-    const track = document.querySelector('.carousel-track');
-    if (track) {
-        track.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; });
-        track.addEventListener('touchend', (e) => {
-            const diff = touchStartX - e.changedTouches[0].clientX;
-            if (Math.abs(diff) > 50) {
-                if (diff > 0) showCard((currentIndex + 1) % cards.length);
-                else showCard((currentIndex - 1 + cards.length) % cards.length);
-            }
+        recoPrev.addEventListener('click', () => {
+            recoSlider.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
         });
     }
 
     // ============ INTERACTIVE SKILLS RADAR CHART ============
     const radarSkills = [
-        { label: 'AWS Cloud', value: 0.95, detail: '95% — EMR, S3, Redshift, Glue, Lambda, CDK' },
-        { label: 'PySpark', value: 0.9, detail: '90% — 45B+ records/month processing' },
-        { label: 'Airflow', value: 0.92, detail: '92% — 34 DAGs in production' },
-        { label: 'SQL', value: 0.88, detail: '88% — Hive, Redshift, PostgreSQL, Athena' },
-        { label: 'Hadoop', value: 0.85, detail: '85% — 100TB cluster, 750+ nodes' },
-        { label: 'Data Modeling', value: 0.82, detail: '82% — Dimensional, SCD, Bronze-Silver-Gold' }
+        { label: 'AWS Cloud', value: 0.95, detail: 'Expert — EMR, S3, Redshift, Glue, Lambda, CDK' },
+        { label: 'PySpark', value: 0.92, detail: 'Expert — 45B+ records/month processing at scale' },
+        { label: 'Airflow', value: 0.93, detail: 'Expert — 34 production DAGs, complex orchestration' },
+        { label: 'SQL', value: 0.88, detail: 'Advanced — Hive, Redshift, PostgreSQL, Athena' },
+        { label: 'Hadoop', value: 0.78, detail: 'Advanced — 100TB cluster, 750+ nodes (legacy)' },
+        { label: 'Data Modeling', value: 0.85, detail: 'Advanced — Dimensional, SCD, Bronze-Silver-Gold' }
     ];
 
     let radarPoints = [];

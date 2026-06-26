@@ -71,9 +71,9 @@ A modern, responsive, interactive personal resume website for Sharad Sharma (Dat
 1. **Hero** — Particle network background, badge (Data Engineer II @ Amazon · Gurgaon, India), name, tagline, 3 animated stats, CTAs + download resume
 2. **About** — "Pipelines at scale, reliability by design" + 3 highlight cards
 3. **Experience** — 4 roles with company logos, project details, tech tags with devicon logos
-4. **Projects** — Carousel with 3 project cards (Fintech TDW, DEEP, ExaLogs) showing metrics + tech
-5. **Skills** — Radar chart (6-axis) + 6 categories with icon-labeled pills
-6. **Education** — B.Tech card with college logo + Certifications/Awards
+4. **Skills** — Interactive radar chart (6-axis, hover tooltips) + 6 categories with icon-labeled pills
+5. **Education** — B.Tech card with college logo + Certifications/Awards
+6. **Recommendations** — 5 LinkedIn recommendations in horizontal scroll (3 visible at a time, arrow navigation, company context tags)
 7. **Contact** — "Get in touch" + email, phone, LinkedIn, GitHub, location
 
 ---
@@ -182,7 +182,10 @@ A modern, responsive, interactive personal resume website for Sharad Sharma (Dat
 - ~~Add a Projects section~~ ✅ Done (carousel with 3 project cards)
 - ~~Add interactive skills visualization~~ ✅ Done (radar chart)
 - ~~Add animated hero background~~ ✅ Done (particle network)
+- ~~Add Open Graph meta tags~~ ✅ Done (og:title, og:description, og:image + twitter:card)
+- ~~Add prefers-reduced-motion~~ ✅ Done (disables all animations for accessibility)
+- ~~Add LinkedIn recommendations~~ ✅ Done (5 cards — Nirmal Kumar, Shivani Nathwani, Nitish Kochar, Rajlaxmi Desurkar, Mukesh Upadhyay — 3 visible at a time with scroll arrows + company context tags)
+- ~~Add proficiency levels to radar chart~~ ✅ Done (Expert/Advanced legend + differentiated values + hover tooltip)
 - Add page analytics (Google Analytics or Plausible)
 - Optimize images (compress JPGs, convert to WebP)
-- Add Open Graph meta tags for social sharing preview
-- Add a subtle background pattern or gradient mesh to hero
+- Add a case study page for the 71% cost reduction migration
