@@ -14,6 +14,19 @@
     --nav-height: 72px;
 }
 
+[data-theme="dark"] {
+    --color-bg: #0f0f0f;
+    --color-surface: #1a1a1a;
+    --color-text: #f0f0f0;
+    --color-text-secondary: #a0a0a0;
+    --color-text-muted: #666;
+    --color-accent: #4d9fff;
+    --color-accent-light: #1a2d4a;
+    --color-gradient-start: #4d9fff;
+    --color-gradient-end: #a78bfa;
+    --color-border: #2a2a2a;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -133,6 +146,95 @@ body {
 .nav-cta:hover {
     transform: translateY(-1px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Nav actions group */
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* LinkedIn nav link */
+.nav-linkedin {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    text-decoration: none;
+    color: var(--color-text-secondary);
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 0.4rem 0.75rem;
+    border-radius: 8px;
+    transition: all 0.2s;
+}
+
+.nav-linkedin:hover {
+    color: #0a66c2;
+    background: rgba(10, 102, 194, 0.08);
+}
+
+.nav-linkedin svg {
+    flex-shrink: 0;
+}
+
+/* Theme Toggle */
+.theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    background: var(--color-surface);
+    cursor: pointer;
+    transition: all 0.2s;
+    color: var(--color-text);
+}
+
+.theme-toggle:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+    transform: translateY(-1px);
+}
+
+.theme-toggle .icon-moon {
+    display: none;
+}
+
+[data-theme="dark"] .theme-toggle .icon-sun {
+    display: none;
+}
+
+[data-theme="dark"] .theme-toggle .icon-moon {
+    display: block;
+}
+
+[data-theme="dark"] .nav-logo {
+    background: var(--color-accent);
+}
+
+[data-theme="dark"] .nav-cta {
+    background: var(--color-accent) !important;
+}
+
+[data-theme="dark"] .btn-primary {
+    background: var(--color-accent);
+}
+
+[data-theme="dark"] .navbar {
+    background: rgba(15, 15, 15, 0.85);
+}
+
+[data-theme="dark"] .company-logo {
+    background: #2a2a2a;
+    border: 1px solid var(--color-border);
+}
+
+[data-theme="dark"] .edu-logo {
+    background: #2a2a2a;
+    border-color: var(--color-border);
 }
 
 .nav-toggle {
@@ -860,6 +962,10 @@ body {
 
     .nav-links a {
         font-size: 1.1rem;
+    }
+
+    .nav-linkedin span {
+        display: none;
     }
 
     .nav-toggle {
