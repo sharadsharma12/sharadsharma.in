@@ -20,7 +20,7 @@ A modern, responsive, interactive personal resume website for Sharad Sharma (Dat
 ```
 ~/resume-website/
 ├── index.html          — Main page (single-page, 6 sections)
-├── style.css           — Responsive styles (3 breakpoints) + dark/light theme + micro-interactions
+├── style.css           — Responsive styles (3 breakpoints) + dark/light theme + micro-interactions + print styles
 ├── script.js           — Theme toggle, animated counters, parallax, magnetic buttons, scroll animations
 ├── CNAME               — Custom domain file for GitHub Pages
 ├── SESSION_LOG.md      — This file
@@ -29,7 +29,8 @@ A modern, responsive, interactive personal resume website for Sharad Sharma (Dat
     ├── tothenew.jpg    — To The New logo
     ├── optum.jpg       — Optum logo
     ├── tcs.png         — TCS logo
-    └── glbajaj.jpeg    — GL Bajaj Institute logo
+    ├── glbajaj.jpeg    — GL Bajaj Institute logo
+    └── Sharad_Sharma_Resume.pdf — Downloadable resume
 ```
 
 ---
@@ -39,6 +40,7 @@ A modern, responsive, interactive personal resume website for Sharad Sharma (Dat
 ### Core
 - **Dark/Light theme toggle** — Sun/moon icon in navbar, persists via localStorage, respects system preference on first visit
 - **LinkedIn quick link** — `/sharadsharma12` with icon in navbar, grouped with theme toggle
+- **Download Resume** — PDF download button in hero section (downloads `Sharad_Sharma_Resume.pdf`)
 - **Company logos** — Real logos next to each job title
 - **Tech stack icons** — Devicon library for Python, Java, Spark, Airflow, PostgreSQL, etc.
 - **Fully responsive** — 3 breakpoints (1024px, 768px, 400px), mobile hamburger nav with animation
@@ -172,7 +174,7 @@ A modern, responsive, interactive personal resume website for Sharad Sharma (Dat
 - ~~Add LinkedIn in navbar~~ ✅ Done
 - ~~Make it interactive~~ ✅ Done (counters, parallax, magnetic buttons, micro-interactions)
 - ~~Remove generic copy~~ ✅ Done
-- Add a downloadable PDF resume link
+- ~~Add a downloadable PDF resume link~~ ✅ Done
 - Add a Projects section with live demos
 - Add page analytics (Google Analytics or Plausible)
 - Optimize images (compress JPGs, convert to WebP)
