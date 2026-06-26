@@ -707,42 +707,37 @@ body {
 
 .carousel-track {
     position: relative;
-    overflow: hidden;
     border-radius: 20px;
     flex: 1;
-    min-height: 320px;
 }
 
 .project-card {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
+    display: none;
     padding: 2.5rem;
     background: var(--color-surface);
     border: 1px solid var(--color-border);
     border-radius: 20px;
     opacity: 0;
-    transform: translateX(80px) scale(0.95);
-    pointer-events: none;
-    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+    transform: translateY(12px);
+    animation: none;
 }
 
 .project-card.active {
+    display: block;
     opacity: 1;
-    transform: translateX(0) scale(1);
-    pointer-events: all;
-    position: relative;
+    transform: translateY(0);
+    animation: cardFadeIn 0.45s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
-.project-card.slide-left {
-    opacity: 0;
-    transform: translateX(-80px) scale(0.95);
-}
-
-.project-card.slide-right {
-    opacity: 0;
-    transform: translateX(80px) scale(0.95);
+@keyframes cardFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .project-card-header {

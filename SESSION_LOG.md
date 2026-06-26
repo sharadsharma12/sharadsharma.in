@@ -48,8 +48,8 @@ A modern, responsive, interactive personal resume website for Sharad Sharma (Dat
 
 ### Interactivity (Subtle & Professional)
 - **Animated particle network** — Hero background with drifting dots connected by lines; adapts to theme; pauses off-screen for performance
-- **Project cards carousel** — 3 swipeable project cards (Fintech TDW, DEEP, ExaLogs) with metrics; auto-advances every 5s; dot navigation; touch swipe support on mobile
-- **Skills radar chart** — 6-axis spider chart (AWS Cloud, PySpark, Airflow, SQL, Hadoop, Data Modeling) with gradient fill; sticky on desktop; redraws on theme switch
+- **Project cards carousel** — 3 swipeable project cards (Fintech TDW, DEEP, ExaLogs) with metrics; directional slide animations (left/right with scale); auto-advances every 5s; dot navigation; touch swipe support on mobile; pauses on hover
+- **Interactive skills radar chart** — 6-axis spider chart with animated draw-in on scroll; hover highlights dots (glow + scale); tooltip shows proficiency % and context (e.g., "92% — 34 DAGs in production"); cursor changes to crosshair; redraws on theme switch; sticky on desktop
 - **Animated stat counters** — Numbers count up from 0 when scrolling into view (eased with quartic curve)
 - **Hero parallax** — Title fades out and stats drift up as you scroll
 - **Magnetic buttons** — Follow cursor slightly on hover + shine sweep on primary button

@@ -102,61 +102,45 @@ document.addEventListener('DOMContentLoaded', () => {
         heroObserver.observe(canvas);
     }
 
-    // ============ PROJECT CAROUSEL (Improved) ============
+    // ============ PROJECT CAROUSEL ============
     const cards = document.querySelectorAll('.project-card');
     const dots = document.querySelectorAll('.dot');
     const prevBtn = document.querySelector('.carousel-prev');
     const nextBtn = document.querySelector('.carousel-next');
     let currentIndex = 0;
-    let direction = 'right';
 
-    function showCard(index, dir) {
-        if (index === currentIndex) return;
-        direction = dir || (index > currentIndex ? 'right' : 'left');
+    function showCard(index) {
+        if (index === currentIndex && cards[index].classList.contains('active')) return;
 
-        cards.forEach((card, i) => {
-            card.classList.remove('active', 'slide-left', 'slide-right');
-            if (i === currentIndex) {
-                card.classList.add(direction === 'right' ? 'slide-left' : 'slide-right');
-            }
+        cards.forEach(card => card.classList.remove('active'));
+        dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+
+        // Small delay to restart animation cleanly
+        requestAnimationFrame(() => {
+            cards[index].classList.add('active');
         });
 
-        setTimeout(() => {
-            cards.forEach((card, i) => {
-                card.classList.remove('active', 'slide-left', 'slide-right');
-                if (i === index) {
-                    card.style.transform = direction === 'right'
-                        ? 'translateX(80px) scale(0.95)'
-                        : 'translateX(-80px) scale(0.95)';
-                    card.offsetHeight; // force reflow
-                    card.classList.add('active');
-                    card.style.transform = '';
-                }
-            });
-        }, 50);
-
-        dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
         currentIndex = index;
     }
 
+    // Ensure first card (Amazon) is active on load
+    showCard(0);
+
     if (prevBtn && nextBtn) {
         prevBtn.addEventListener('click', () => {
-            showCard((currentIndex - 1 + cards.length) % cards.length, 'left');
+            showCard((currentIndex - 1 + cards.length) % cards.length);
         });
         nextBtn.addEventListener('click', () => {
-            showCard((currentIndex + 1) % cards.length, 'right');
+            showCard((currentIndex + 1) % cards.length);
         });
     }
 
     dots.forEach(dot => {
-        dot.addEventListener('click', () => {
-            const idx = parseInt(dot.dataset.index);
-            showCard(idx, idx > currentIndex ? 'right' : 'left');
-        });
+        dot.addEventListener('click', () => showCard(parseInt(dot.dataset.index)));
     });
 
     let carouselInterval = setInterval(() => {
-        showCard((currentIndex + 1) % cards.length, 'right');
+        showCard((currentIndex + 1) % cards.length);
     }, 5000);
 
     const carouselWrapper = document.querySelector('.carousel-wrapper');
@@ -164,7 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
         carouselWrapper.addEventListener('mouseenter', () => clearInterval(carouselInterval));
         carouselWrapper.addEventListener('mouseleave', () => {
             carouselInterval = setInterval(() => {
-                showCard((currentIndex + 1) % cards.length, 'right');
+                showCard((currentIndex + 1) % cards.length);
             }, 5000);
         });
     }
@@ -177,8 +161,8 @@ document.addEventListener('DOMContentLoaded', () => {
         track.addEventListener('touchend', (e) => {
             const diff = touchStartX - e.changedTouches[0].clientX;
             if (Math.abs(diff) > 50) {
-                if (diff > 0) showCard((currentIndex + 1) % cards.length, 'right');
-                else showCard((currentIndex - 1 + cards.length) % cards.length, 'left');
+                if (diff > 0) showCard((currentIndex + 1) % cards.length);
+                else showCard((currentIndex - 1 + cards.length) % cards.length);
             }
         });
     }
