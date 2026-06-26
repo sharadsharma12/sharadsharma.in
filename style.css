@@ -377,44 +377,6 @@ body {
     transform: translateY(-2px);
 }
 
-.hero-scroll {
-    position: absolute;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    animation: fadeInUp 0.6s ease 0.6s both;
-}
-
-.hero-scroll span {
-    font-size: 0.7rem;
-    color: var(--color-text-muted);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-}
-
-.scroll-indicator {
-    width: 2px;
-    height: 24px;
-    background: var(--color-border);
-    border-radius: 2px;
-    position: relative;
-    overflow: hidden;
-}
-
-.scroll-indicator::after {
-    content: '';
-    position: absolute;
-    top: -100%;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--color-accent);
-    animation: scrollDown 1.5s ease infinite;
-}
 
 /* ========== About ========== */
 .about {
@@ -903,10 +865,6 @@ body {
     }
 }
 
-@keyframes scrollDown {
-    0% { top: -100%; }
-    100% { top: 100%; }
-}
 
 .fade-in {
     opacity: 0;
@@ -1009,9 +967,6 @@ body {
         width: 100%;
     }
 
-    .hero-scroll {
-        display: none;
-    }
 
     .about,
     .experience,
