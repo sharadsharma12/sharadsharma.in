@@ -1,6 +1,6 @@
 # Resume Website — Session Log
 
-**Date:** 2026-06-26  
+**Date:** 2026-06-26 (updated 2026-06-27)  
 **Outcome:** Portfolio website built and deployed to https://sharadsharma.in
 
 ---
@@ -189,3 +189,34 @@ A modern, responsive, interactive personal resume website for Sharad Sharma (Dat
 - Add page analytics (Google Analytics or Plausible)
 - Optimize images (compress JPGs, convert to WebP)
 - Add a case study page for the 71% cost reduction migration
+
+---
+
+## Session 2 Updates (2026-06-27)
+
+### Changes Made
+
+1. **Profile photo added** — Circular 120px headshot in hero section (90px on mobile)
+2. **Hero layout restructured** — CSS Grid (`grid-template-columns: 120px 1fr`) with photo left, name + badge right; replaced negative margin hack
+3. **Favicon added** — SVG favicon (`assets/favicon.svg`) with "SS" branding in blue square
+4. **Font subsetting** — Inter reduced from 7 weights (300-900) to 3 (400/600/800) for faster load
+5. **Devicon lazy-loaded** — `media="print" onload="this.media='all'"` defers non-critical CSS
+6. **OG image fixed** — Regenerated at correct 1200x630 ratio (was 1200x1200, cropped on Slack/LinkedIn)
+7. **Nav logo animation** — 3D tilt on hover (`perspective(400px) rotateY(25deg)`), expands from "SS" to "Sharad Sharma"
+8. **Nav logo theming** — Black background in light mode, blue in dark mode
+9. **Hero badge tightened** — `width: fit-content` + smaller padding so pill hugs text
+10. **Photo circle fix** — Added `min-width`, `max-width`, `aspect-ratio: 1/1` to prevent stretching on prod
+11. **Recommendations reordered** — Mukesh, Shivani, Nitish (managers first), then Nirmal, Rajlaxmi (colleagues)
+12. **Recommendation corrections** — Nitish: "Managed me at Optum" (was TCS); Shivani: "Managed me at TCS" (was Optum)
+
+### New Files
+- `assets/photo.jpeg` — Profile headshot
+- `assets/favicon.svg` — SVG favicon
+
+### Known Issue (Prod)
+- **SS → Sharad Sharma expansion broken on prod** — Logo expand animation not rendering correctly on live site. Needs investigation (likely CSS not uploaded or cached).
+
+### Files Modified
+- `index.html` — Photo, favicon link, font subset, logo markup, recommendation reorder
+- `style.css` — Hero grid, photo styles, logo animation, badge fit-content, dark mode overrides
+- `assets/og-preview.png` — Replaced with 1200x630 version
