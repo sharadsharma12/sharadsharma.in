@@ -21,12 +21,14 @@ document.addEventListener('DOMContentLoaded', () => {
     navToggle.addEventListener('click', () => {
         navLinks.classList.toggle('active');
         navToggle.classList.toggle('active');
+        document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
     });
 
     navLinks.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
             navLinks.classList.remove('active');
             navToggle.classList.remove('active');
+            document.body.style.overflow = '';
         });
     });
 
@@ -124,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { label: 'AWS Cloud', value: 0.95, detail: 'Expert — EMR, S3, Redshift, Glue, Lambda, CDK' },
         { label: 'PySpark', value: 0.92, detail: 'Expert — 45B+ records/month processing at scale' },
         { label: 'Airflow', value: 0.93, detail: 'Expert — 34 production DAGs, complex orchestration' },
-        { label: 'SQL', value: 0.88, detail: 'Advanced — Hive, Redshift, PostgreSQL, Athena' },
+        { label: 'SQL', value: 0.92, detail: 'Expert — Hive, Redshift, PostgreSQL, Athena' },
         { label: 'Hadoop', value: 0.78, detail: 'Advanced — 100TB cluster, 750+ nodes (legacy)' },
         { label: 'Data Modeling', value: 0.85, detail: 'Advanced — Dimensional, SCD, Bronze-Silver-Gold' }
     ];
@@ -282,11 +284,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     tooltip.textContent = skill.detail;
                     tooltip.classList.add('visible');
 
-                    const point = radarPoints[found];
-                    const tooltipX = (point.x / 360) * rect.width;
-                    const tooltipY = (point.y / 360) * rect.height;
+                    const wrapperRect = radarCanvas.parentElement.getBoundingClientRect();
+                    const tooltipX = Math.min(Math.max(10, e.clientX - wrapperRect.left), wrapperRect.width - 10);
+                    const tooltipY = e.clientY - wrapperRect.top - 40;
                     tooltip.style.left = tooltipX + 'px';
-                    tooltip.style.top = (tooltipY - 40) + 'px';
+                    tooltip.style.top = tooltipY + 'px';
                     tooltip.style.transform = 'translateX(-50%)';
                 } else {
                     tooltip.classList.remove('visible');
@@ -298,6 +300,49 @@ document.addEventListener('DOMContentLoaded', () => {
             hoveredSkill = -1;
             drawRadarChart();
             tooltip.classList.remove('visible');
+        });
+
+        radarCanvas.addEventListener('click', (e) => {
+            const rect = radarCanvas.getBoundingClientRect();
+            const scaleX = 360 / rect.width;
+            const scaleY = 360 / rect.height;
+            const mx = (e.clientX - rect.left) * scaleX;
+            const my = (e.clientY - rect.top) * scaleY;
+
+            let found = -1;
+            radarPoints.forEach((point, i) => {
+                const dx = mx - point.x;
+                const dy = my - point.y;
+                if (Math.sqrt(dx * dx + dy * dy) < 35) {
+                    found = i;
+                }
+            });
+
+            if (found >= 0) {
+                hoveredSkill = found;
+                drawRadarChart();
+                const skill = radarSkills[found];
+                tooltip.textContent = skill.detail;
+                tooltip.classList.add('visible');
+                const wrapperRect = radarCanvas.parentElement.getBoundingClientRect();
+                const tooltipX = Math.min(Math.max(10, e.clientX - wrapperRect.left), wrapperRect.width - 10);
+                const tooltipY = e.clientY - wrapperRect.top - 44;
+                tooltip.style.left = tooltipX + 'px';
+                tooltip.style.top = tooltipY + 'px';
+                tooltip.style.transform = 'translateX(-50%)';
+            } else {
+                hoveredSkill = -1;
+                drawRadarChart();
+                tooltip.classList.remove('visible');
+            }
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!radarCanvas.contains(e.target)) {
+                hoveredSkill = -1;
+                drawRadarChart();
+                tooltip.classList.remove('visible');
+            }
         });
 
         // Observe to trigger animation

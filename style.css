@@ -1125,6 +1125,7 @@ body {
     max-width: 100%;
     height: auto;
     cursor: crosshair;
+    touch-action: none;
 }
 
 .radar-legend {
@@ -1172,6 +1173,9 @@ body {
     transition: opacity 0.2s, transform 0.2s;
     white-space: nowrap;
     z-index: 100;
+    max-width: 90vw;
+    white-space: normal;
+    text-align: center;
 }
 
 .radar-tooltip.visible {
@@ -1463,7 +1467,7 @@ section {
     }
 
     .skills-chart-wrapper {
-        position: static;
+        position: relative;
     }
 
     .skills-grid {
@@ -1483,17 +1487,18 @@ section {
 
     .nav-links {
         display: none;
-        position: fixed;
-        top: var(--nav-height);
+        position: absolute;
+        top: 100%;
         left: 0;
         right: 0;
-        bottom: 0;
-        background: var(--color-surface);
+        height: calc(100vh - var(--nav-height));
+        background: var(--color-bg);
         flex-direction: column;
         padding: 2rem 1.5rem;
         gap: 1.5rem;
         border-top: 1px solid var(--color-border);
         z-index: 999;
+        overflow-y: auto;
     }
 
     .nav-links.active {
